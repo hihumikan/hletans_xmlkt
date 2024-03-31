@@ -2,7 +2,7 @@
 
 # Location-based Home ETA Notification System
 
-帰宅報告(帰宅予想時間と現在位置)をwebhooksに通知する奴のAndroid(クライアント側)
+帰宅報告(帰宅予想時間と現在位置)をwebhooksに通知する奴のAndroid(クライアント側)の実装
 
 ## License
 
