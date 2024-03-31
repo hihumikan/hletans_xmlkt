@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         val travelMode:EditText = findViewById(R.id.travel_mode_form)
         val webhookURL:EditText = findViewById(R.id.webhook_url_form)
         val endpointURL:EditText = findViewById(R.id.endpoint_url_form)
-
         val getLocationButton: Button = findViewById(R.id.get_locate)
         val sendButton: Button = findViewById(R.id.send_button)
 
