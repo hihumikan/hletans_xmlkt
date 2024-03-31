@@ -37,10 +37,10 @@ class MainActivity : AppCompatActivity() {
         val sendButton: Button = findViewById(R.id.send_button)
 
         sendButton.setOnClickListener {
-            postAPI(homeLocation.text.toString(),currentLocation.text.toString(),travelMode.text.toString(),webhookURL.text.toString(),endpointURL.text.toString())
+            postNotification(homeLocation.text.toString(),currentLocation.text.toString(),travelMode.text.toString(),webhookURL.text.toString(),endpointURL.text.toString())
         }
     }
-    fun postAPI(hloc: String,cloc:String,tra:String,weburl:String,endurl:String) {
+    private fun postNotification(hloc: String, cloc:String, tra:String, weburl:String, endurl:String) {
         val json = """
             {
                 "home_location": "$hloc",
