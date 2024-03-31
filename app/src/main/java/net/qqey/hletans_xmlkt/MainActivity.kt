@@ -36,22 +36,22 @@ class MainActivity : AppCompatActivity() {
         val getLocationButton: Button = findViewById(R.id.get_locate)
         val sendButton: Button = findViewById(R.id.send_button)
 
-        getLocationButton.setOnClickListener {
-            homeLocation.setText("35.681236,139.767125")
-            currentLocation.setText("35.681236,139.767125")
-            travelMode.setText("driving")
-            webhookURL.setText("https://hooks.slack.com/services/T01JZQZQZ5X/B01JZQZQZ5X/1JZQZQZ5X")
-            endpointURL.setText(postAPI())
-
+        sendButton.setOnClickListener {
+            postAPI(homeLocation.text.toString(),currentLocation.text.toString(),travelMode.text.toString(),webhookURL.text.toString(),endpointURL.text.toString())
         }
     }
-    fun postAPI(): String {
-        val url = "https://api.hletans.qqey.net/notification"
-        val json = "{\"home_location\":\"35.681236,139.767125\",\"current_location\":\"35.681236,139.767125\",\"travel_mode\":\"driving\"}"
-        val endpointURL = "https://hooks.slack.com/services/T01JZQZQZ5X/B01JZQZQZ5X/1JZQZQZ5X"
+    fun postAPI(hloc: String,cloc:String,tra:String,weburl:String,endurl:String) {
+        val json = """
+            {
+                "home_location": "$hloc",
+                "current_location": "$cloc",
+                "travel_mode": "$tra",
+                "webhook_url": "$weburl"
+            }
+        """.trimIndent()
         thread {
             try {
-                val url = URL(url)
+                val url = URL(endurl)
                 val con = url.openConnection() as HttpURLConnection
                 con.requestMethod = "POST"
                 con.setRequestProperty("Content-Type", "application/json; charset=utf-8")
@@ -84,6 +84,5 @@ class MainActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
         }
-        return endpointURL
     }
 }
